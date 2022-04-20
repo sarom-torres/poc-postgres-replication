@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  primary:
+    container_name: primary
+    image: saromtorres/postgresql-primary:1.0
+    env_file:
+      .primary_vars
+    ports:
+      - "5455:5432"
+    networks:
+      dockernetwork:
+        ipv4_address: 172.18.0.105
+    volumes:
+      - ./certs:/etc/ssl/certs 
+      - ./data/psql/primary:/var/lib/postgresql/data 
+
+  standby:
+    container_name: standby
+    image: saromtorres/postgresql-standby:1.0
+    env_file:
+      .standby_vars
+    ports:
+      - "5456:5432"
+    networks:
+      dockernetwork:
+        ipv4_address: 172.18.0.106
+    volumes:
+      - ./certs:/etc/ssl/certs
+      - ./data/psql/standby:/var/lib/postgresql/data
+
+networks:
+  dockernetwork:
+    external: true
+
+#networks:
+#  dockernetwork:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 172.18.0.0/24

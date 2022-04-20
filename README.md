@@ -1,7 +1,27 @@
-# Configuração de ambiente com elementos seguros
+# Configuração de replicação PostgreSQL
 
-![image](https://user-images.githubusercontent.com/34520860/164287623-f6cf87db-2a5e-4a1a-bb6a-c2bf46e53fb9.png)
+<img src="https://user-images.githubusercontent.com/34520860/164287623-f6cf87db-2a5e-4a1a-bb6a-c2bf46e53fb9.png" width="350">
 
+
+## Execução da POC de replicação
+> É necessário ter o Docker e o Docker Compose instalado
+
+1. Criar uma rede para conectar os contêineres
+    ```
+    docker network create --subnet=172.18.0.0/24 dockernetwork
+    ```
+2. Mudar permissões de diretórios de volumes
+    ```
+    chown 999:999 data/psql/primary data/psql/standby data/psql/repl
+    ```
+3. Executar o ambiente utlizando docker compose
+   ```
+   docker-compose up -d primary
+   docker-compose up -d standby
+   ```
+----------------------------------------------
+
+# Construção do ambiente de replicação
 
 ## Primary
 

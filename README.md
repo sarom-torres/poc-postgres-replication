@@ -12,7 +12,8 @@
     ```
 2. Mudar permissões de diretórios de volumes
     ```
-    chown 999:999 data/psql/primary data/psql/standby data/psql/repl
+    chown 999:999 data/psql/primary data/psql/standby certs
+    chmod 600 certs/server.key
     ```
 3. Executar o ambiente utlizando docker compose
    ```

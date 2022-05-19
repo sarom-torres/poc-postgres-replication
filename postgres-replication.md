@@ -33,6 +33,8 @@ Algumas soluções podem lidar apenas com um servidor de banco de dados inteiro,
 - À medida que novos registros são gravados, eles são anexados aos logs do WAL. 
 - O _Log Sequence Number_ (LSN) é um identificador exclusivo no log de transações. Ele representa uma posição de um registro no fluxo WAL. Ou seja, à medida que os registros são adicionados ao log do Postgres WAL, suas posições de inserção são descritas pelo número de sequência do log. 
 - **pg_lsn** é o tipo de dados no qual um número de sequência de log é retornado.
+- Internamente um LSN é um inteiro de 64-bit. Representando uma posição no WAL. 
+- É mostrado em tela como dois números hexadecimais de 8 digitos cada separados por uma barr. Ex: 16/B374D848. 
 
 ### Commit síncrono vs assíncrono
 
@@ -45,7 +47,7 @@ Algumas soluções podem lidar apenas com um servidor de banco de dados inteiro,
 
 # Replicação Postgres WAL
 
-A preplicação WALpode ocorrer de duas maneiras entre os servidores de banco de dados:
+A preplicação WAL pode ocorrer de duas maneiras entre os servidores de banco de dados:
 
 ## File-Based Log Shipping
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 base_path=$(pwd)
 primary_path="data/psql/primary"
 standby_path="data/psql/standby"
@@ -42,8 +44,8 @@ do
     let count=count+1
 done
 
-chown 999:999 -R data/
-chown 999:999 -R certs/
-sudo chmod 600 certs/server.key
+#chown 999:999 -R data/
+#chown 999:999 -R certs/
+#sudo chmod 600 certs/server.key
 
 

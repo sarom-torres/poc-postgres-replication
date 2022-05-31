@@ -10,10 +10,9 @@
     ```
     docker network create --subnet=172.18.0.0/24 dockernetwork
     ```
-2. Mudar permissões de diretórios de volumes
+2. Executar o script `scripts/setup-env.sh`
     ```
-    chown 999:999 data/psql/primary data/psql/standby certs
-    chmod 600 certs/server.key
+    ./scripts/setup-env.sh
     ```
 3. Executar o ambiente utlizando docker compose
    ```
